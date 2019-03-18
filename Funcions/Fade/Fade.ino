@@ -3,9 +3,9 @@
   #include <avr/power.h>
 #endif
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, 6, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel (60, 6, NEO_GRB + NEO_KHZ800);
 
-byte neopix_gamma[] = {
+byte neopix_gamma [] = {
     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,
     1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,
@@ -23,29 +23,31 @@ byte neopix_gamma[] = {
   177,180,182,184,186,189,191,193,196,198,200,203,205,208,210,213,
   215,218,220,223,225,228,231,233,236,239,241,244,247,249,252,255 };
 
+uint32_t color = strip.Color (255, 0, 0);
 
-void setup () {
+void setup () {;
   strip.begin ();
-  strip.setBrightness (50);
+  strip.setBrightness (10);
   strip.show ();
 }
 
-void loop() {
-  fade (5);
+void loop () {
+  pulseWhite (5);
 }
 
-void fade (uint8_t wait) {
-  for (int j = 0; j < 256 ; j++){
-    for (uint16_t i = 0; i < strip.numPixels (); i++) {
-      strip.setPixelColor (i, strip.Color (0, 0, 0, neopix_gamma[j]));
+void pulseWhite (uint8_t wait) {
+  for (int j = 0; j < 256; j++) {
+    for (int i = 0; i < strip.numPixels (); i++) {
+      strip.setPixelColor (i, color);
+      strip.setBrightness (neopix_gamma[j]);
     }
     delay (wait);
     strip.show ();
- }
-
-  for (int j = 255; j >= 0 ; j--){
-    for (uint16_t i = 0; i < strip.numPixels (); i++) {
-          strip.setPixelColor (i, strip.Color (0, 0, 0, neopix_gamma[j]));
+  }
+  for (int j = 255; j >= 0; j--){
+    for (int i = 0; i < strip.numPixels (); i++) {
+      strip.setPixelColor (i, color);
+      strip.setBrightness (neopix_gamma[j]);
     }
     delay (wait);
     strip.show ();
