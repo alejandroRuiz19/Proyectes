@@ -19,7 +19,7 @@ void loop () {
 
 void Rainbow (uint8_t wait) {
   for (int i = 0; i < strip.numPixels (); i++) {
-      strip.setPixelColor (i, Wheel ((i * 4) & 255));
+      strip.setPixelColor (i, Wheel ((byte) (i * 4) & 255));
   }
   strip.show ();
   delay (wait);

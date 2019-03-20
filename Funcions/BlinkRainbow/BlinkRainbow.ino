@@ -5,8 +5,6 @@
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel (60, 6, NEO_GRB + NEO_KHZ800);
 
-uint32_t color = strip.Color (255, 0, 0);
-
 void setup () {;
   strip.begin ();
   strip.setBrightness (10);
@@ -14,16 +12,21 @@ void setup () {;
 }
 
 void loop () {
-  ChangingRainbow (5);
+  BlinkRainbow (25);
 }
 
-void ChangingRainbow (uint8_t wait) {
+void BlinkRainbow (uint8_t wait) {
   for (int j = 0; j < 256; j++) {
-    for (int i = 0; i < strip.numPixels (); i++) {
-      strip.setPixelColor (i, Wheel ((i+j) & 255));
+    for (int q = 0; q < 3; q++) {
+      for (uint16_t i = 0; i < strip.numPixels (); i += 3) {
+        strip.setPixelColor (i + q, Wheel ((i + j) % 255));
+      }
+      strip.show ();
+      delay (wait);
+      for (uint16_t i = 0; i < strip.numPixels (); i += 3) {
+        strip.setPixelColor (i + q, 0);
+      }
     }
-    strip.show ();
-    delay (wait);
   }
 }
 

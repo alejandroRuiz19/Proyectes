@@ -32,10 +32,10 @@ void setup () {;
 }
 
 void loop () {
-  pulseWhite (5);
+  Fade (5);
 }
 
-void pulseWhite (uint8_t wait) {
+void Fade (uint8_t wait) {
   for (int j = 0; j < 256; j++) {
     for (int i = 0; i < strip.numPixels (); i++) {
       strip.setPixelColor (i, color);

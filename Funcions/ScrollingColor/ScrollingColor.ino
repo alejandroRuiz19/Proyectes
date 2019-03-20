@@ -12,10 +12,10 @@ void setup () {;
 }
 
 void loop() {
-  colorWipe (strip.Color (255, 0, 0), 50);
+  ScrollingColor (strip.Color (255, 0, 0), 50);
 }
 
-void colorWipe (uint32_t c, uint8_t wait) {
+void ScrollingColor (uint32_t c, uint8_t wait) {
   for (int i = 0; i < strip.numPixels (); i++) {
     strip.setPixelColor (i, c);
     strip.show ();
