@@ -81,7 +81,8 @@ else:
             y = round (y)
             y += 30
             pixel = image [y, x]
-            output.write (str (pixel [0]) + "," + str (pixel [1]) + "," + str (pixel [2]) + "," + str (pixel [3]) + " ")
+            if (pixel [3] == 255): output.write (str (pixel [0]) + "," + str (pixel [1]) + "," + str (pixel [2]) + " ")
+            else: output.write ("0,0,0 ")
         output.write ("\n")
     output.close ()
 
