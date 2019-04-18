@@ -1,8 +1,6 @@
 from math import *
 import imageio
 
-image = imageio.imread ("Test.png", as_gray = False, pilmode = "RGBA")
-
 leds_position = {
     1: -30,
     2: -29,
@@ -66,10 +64,12 @@ leds_position = {
     60: 30
 }
 
+image = imageio.imread ("Image.png", as_gray = False, pilmode = "RGBA")
+
 if image.shape [0] != 61 and image.shape [1] != 61:
     print ("Image is not 61 x 61 pixels")
 else:
-    output = open ("data.txt", "w")
+    output = open ("Image_data.txt", "w")
     for degrees in range (0, -360, -1):
         c = cos (degrees * pi / 180)
         s = sin (degrees * pi / 180)
@@ -85,17 +85,3 @@ else:
             else: output.write ("0,0,0 ")
         output.write ("\n")
     output.close ()
-
-
-
-"""
-c = cos angle de rotacio
-s = sin angle de rotacio
-x = radi del pixel respecte centre circumferencia * c
-y = radi del pixel respecte centre circumferencia * s
-
-pixel = image [y, x]
-output.write (str (pixel [0]) + "," + str (pixel [1]) + "," + str (pixel [2]) + "," + str (pixel [3]) + " ")
-
-"""
-
