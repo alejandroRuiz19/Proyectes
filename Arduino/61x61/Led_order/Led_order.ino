@@ -3,6 +3,8 @@
   #include <avr/power.h>
 #endif
 
+Adafruit_NeoPixel strip = Adafruit_NeoPixel (60, 6, NEO_GRB + NEO_KHZ800);
+
 void setup () {
   strip.begin ();
   strip.setBrightness (10);
@@ -13,6 +15,5 @@ void loop () {
   for (byte led = 0; led < strip.numPixels (); ++led) {
     strip.setPixelColor (led, strip.Color (0, 255, 0));
     strip.show ();
-    delay (5000);
   }
 }

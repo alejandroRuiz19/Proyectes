@@ -3,6 +3,8 @@
   #include <avr/power.h>
 #endif
 
+Adafruit_NeoPixel strip = Adafruit_NeoPixel (30, 2, NEO_GRB + NEO_KHZ800);
+
 void setup () {
   strip.begin ();
   strip.setBrightness (10);
